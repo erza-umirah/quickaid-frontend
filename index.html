@@ -1,36 +1,23 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>QuickAid Helpdesk</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <h1>Submit a Helpdesk Ticket</h1>
-    <form id="ticketForm">
-        <label>Email: <input type="email" id="email" required></label><br>
-        <label>Title: <input type="text" id="title" required></label><br>
-        <label>Category: <input type="text" id="category" required></label><br>
-        <label>Description:<br><textarea id="description" required></textarea></label><br>
-        <button type="submit">Submit</button>
-    </form>
-    <script>
-        document.getElementById('ticketForm').onsubmit = async (e) => {
-            e.preventDefault();
-            const ticket = {
-                email: document.getElementById('email').value,
-                title: document.getElementById('title').value,
-                category: document.getElementById('category').value,
-                description: document.getElementById('description').value
-            };
-
-            const response = await fetch('/api/submit_ticket', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(ticket)
-            });
-            const result = await response.json();
-            alert('Ticket ID: ' + result.id);
-        };
-    </script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuickAid Helpdesk - Smart Campus Support</title>
+    <meta
+      name="description"
+      content="Submit support tickets quickly and efficiently with QuickAid Helpdesk"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
